@@ -1,8 +1,9 @@
 import {createSlice} from "@reduxjs/toolkit"
+import Expenses from "../screen/dummy"
 
-const Expenses=createSlice({
-    name:"Expenses",
-    initialState:{expense:[]},
+const Expense = createSlice({
+    name: "Expense",
+    initialState: { expense: Expenses },
     reducers:{
         addExpense:(store,action)=>{},
         remExpense:(store,action)=>{},
@@ -10,8 +11,8 @@ const Expenses=createSlice({
     }
 })
 
-export const addExpense=Expenses.actions.addExpense
-export const updateExpense=Expenses.actions.updateExpense
-export const remExpense=Expenses.actions.remExpense
+export const addExpense = Expense.actions.addExpense
+export const updateExpense = Expense.actions.updateExpense
+export const remExpense = Expense.actions.remExpense
 
-export default Expenses.reducer
+export default Expense.reducer

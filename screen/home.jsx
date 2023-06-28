@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, FlatList, Pressable, Image } from 'react-native';
-import Expenses from './dummy';
+import { useSelector } from "react-redux"
 
 export default function Home({ navigation }) {
     const [total, steTotal] = useState(0)
     let cost = 0
+    const Expenses = useSelector((state) => { return state.Expenses.expense })
     useEffect(() => {
         navigation.setOptions({headerRight:()=>{
             return <Pressable android_ripple={{color:"white"}} onPress={()=>{navigation.navigate("ManageExpenses",{id:"add",name:"name",cost:"cost",date:"date"})}}><Image style={{width:20,height:20}} resizeMode="contain" source={require("../img/plus.png")}/></Pressable>
@@ -13,7 +14,7 @@ export default function Home({ navigation }) {
           }})
         Expenses.map((e) => {
             cost = cost + parseInt(e.cost)
-        })
+        })  
         steTotal(cost)
     }, [])
     return (

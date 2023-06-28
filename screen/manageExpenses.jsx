@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, TouchableOpacity, Pressable } from 'react-native';
-import Expenses from './dummy';
+import { useSelector } from "react-redux"
 
 export default function ManageExpenses({ route, navigation }) {
     const date = route.params.date
     const name = route.params.name
     const cost = route.params.cost
     const id = route.params.id
+    const Expenses = useSelector((state) => { return state.Expenses.expense })
     useEffect(() => {
         navigation.setOptions({ title: id === "add" ? "Add Expense" : "Edit Expense" })
     }, [])
