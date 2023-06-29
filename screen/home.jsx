@@ -16,7 +16,7 @@ export default function Home({ navigation }) {
             cost = cost + parseInt(e.cost)
         })  
         steTotal(cost)
-    }, [])
+    }, [Expenses])
     return (
         <View and onPress={()=>{}}>
             <View className="flex item-center justify-around bg-orange-200 p-1 flex-row">
@@ -29,10 +29,10 @@ export default function Home({ navigation }) {
                     keyExtractor={(item) => item.id}
                     renderItem={({ item }) => {
                         return (
-                            <Pressable android_ripple={{color:"white"}} onPress={()=>{navigation.navigate("ManageExpenses",{id:"edit",name:item.name,cost:item.cost,date:`${item.date.getFullYear()}-${item.date.getMonth() + 1}-${item.date.getDate()}`})}} className="bg-slate-200 flex flex-row items-center justify-between px-5 py-2 my-1">
+                            <Pressable android_ripple={{ color: "white" }} onPress={() => { navigation.navigate("ManageExpenses", { ids: item.id, id: "edit", name: item.name, cost: item.cost, date: item.date }) }} className="bg-slate-200 flex flex-row items-center justify-between px-5 py-2 my-1">
                                 <View className="">
                                     <Text className="text-black font-bold">{item.name}</Text>
-                                    <Text className="text-gray-500">{item.date.getFullYear()}-{item.date.getMonth() + 1}-{item.date.getDate()}</Text>
+                                    <Text className="text-gray-500">{item.date}</Text>
                                 </View>
                                 <Text style={{minWidth:80}} className="text-black text-center p-2 rounded-xl bg-white">Rs {item.cost}</Text>
                             </Pressable>
