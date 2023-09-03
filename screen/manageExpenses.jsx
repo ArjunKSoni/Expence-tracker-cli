@@ -48,7 +48,7 @@ export default function ManageExpenses({ route, navigation }) {
                     <Text className="font-bold text-lg text-center">Cancel</Text>
                 </TouchableOpacity>
                 {id === "add" ? <TouchableOpacity
-                    onPress={() => { dispatch(addExpense({ value: { id: `ac${Math.random() * 1000}`, name: newdesc, date: newDate, cost: parseInt(newcost) } })); navigation.navigate("Home") }}
+                    onPress={() => { dispatch(addExpense({ value: { name: newdesc, date: newDate, cost: parseInt(newcost) } })); navigation.navigate("Home") }}
                     activeOpacity={0.5}
                     style={{ minWidth: 90 }}
                     className="bg-sky-600 p-2 rounded-lg"
@@ -56,7 +56,7 @@ export default function ManageExpenses({ route, navigation }) {
                     <Text className="font-bold text-lg text-center">Add</Text>
                 </TouchableOpacity> :
                 <TouchableOpacity
-                        onPress={() => { dispatch(updateExpense({ value: { id: ids, name: newdesc, date: newDate, cost: parseInt(newcost) } })); navigation.navigate("Home") }}
+                        onPress={() => { dispatch(updateExpense({ id: ids, value: { name: newdesc, date: newDate, cost: parseInt(newcost) } })); navigation.navigate("Home") }}
                         activeOpacity={0.5}
                         style={{ minWidth: 90 }}
                         className="bg-sky-600 p-2 rounded-lg"
